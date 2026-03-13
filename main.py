@@ -18,12 +18,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 # 3. Función del Clasificador Humano
 def clasificador_humano(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g):
-    if bill_depth_mm > (6/11)*bill_length_mm - (56/11):
-        return "Adelie"
-    elif bill_depth_mm > (7/22)*bill_length_mm + (41/22):
-        return "Chinstrap"
-    else:
+    if flipper_length_mm > 206:
         return "Gentoo"
+    
+    if bill_length_mm > 43.3:
+        return "Chinstrap"
+    
+    else:
+        return "Adelie"
 
 # Realizar predicciones humanas
 predicciones_humano = [clasificador_humano(r['bill_length_mm'], r['bill_depth_mm'], 
